@@ -1,0 +1,8 @@
+artifacts_root: artifacts
+
+data_ingestion:
+  root_dir: artifacts/data_ingestion #create a directory in artifacts by the name data_ingestion
+  dataset_name: jessemostipak/hotel-booking-demand #dataset from kaggle api token key downloaded dataset
+  local_data_file: artifacts/data_ingestion/hotel-booking-demand.zip #downloading in compessed format to the place where the local_data_file specifies
+  unzip_dir: artifacts/data_ingestion #extracting the data from the compressed folder to feed to the model
+
