@@ -31,7 +31,6 @@ class ConfigurationManager:
 
         return data_ingestion_config
 
-
     
     def get_data_validation_config(self) -> DataValidationConfig:
 
