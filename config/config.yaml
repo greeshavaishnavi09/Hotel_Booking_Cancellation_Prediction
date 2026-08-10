@@ -6,3 +6,9 @@ data_ingestion:
   local_data_file: artifacts/data_ingestion/hotel-booking-demand.zip #downloading in compessed format to the place where the local_data_file specifies
   unzip_dir: artifacts/data_ingestion #extracting the data from the compressed folder to feed to the model
 
+data_validation:
+   root_dir: artifacts/data_ingestion #create a directory in artifacts by the name data_ingestion
+   STATUS_FILE: artifacts/data_validation/status.txt
+   unzip_data_dir: artifacts/data_ingestion/hotel_bookings.csv
+   all_schema: schema.yaml
+     

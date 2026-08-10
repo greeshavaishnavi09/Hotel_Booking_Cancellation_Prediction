@@ -1,7 +1,9 @@
 from Hotel_Booking_Cancellation_Prediction.logging import logger
 from Hotel_Booking_Cancellation_Prediction.constant import *
+from pathlib import Path
 from Hotel_Booking_Cancellation_Prediction.utils.common import read_yaml, create_directories
 from Hotel_Booking_Cancellation_Prediction.entity.config_entity import DataIngestionConfig
+from Hotel_Booking_Cancellation_Prediction.entity.config_entity import DataValidationConfig
 
 class ConfigurationManager:
     def __init__(
@@ -28,3 +30,26 @@ class ConfigurationManager:
         )
 
         return data_ingestion_config
+
+
+    
+    def get_data_validation_config(self) -> DataValidationConfig:
+
+        config = self.config.data_validation
+
+        create_directories([config.root_dir])
+
+        schema = read_yaml(Path(config.all_schema)) ## here temp because i didnt write 32 colums in config.yaml so i mentioned temp for schema checking
+
+        data_validation_config = DataValidationConfig(
+
+            root_dir=config.root_dir,
+
+            STATUS_FILE=config.STATUS_FILE,
+
+            unzip_data_dir=config.unzip_data_dir,
+
+            all_schema=schema.COLUMNS
+        )
+
+        return data_validation_config
