@@ -18,6 +18,7 @@ data_transformation:
   data_path: artifacts/data_ingestion/hotel_bookings.csv
   transformed_train_path: artifacts/data_transformation/train.csv
   transformed_test_path: artifacts/data_transformation/test.csv
-  preprocessor_path: artifacts/data_transformation/preprocessor.pkl
+  preprocessor_scaled_path: artifacts/data_transformation/preprocessor_scaled.pkl
+  preprocessor_unscaled_path: artifacts/data_transformation/preprocessor_unscaled.pkl
 
      

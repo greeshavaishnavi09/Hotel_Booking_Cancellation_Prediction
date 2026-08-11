@@ -30,4 +30,5 @@ class DataTransformationConfig:
     data_path: Path
     transformed_train_path: Path
     transformed_test_path: Path
-    preprocessor_path: Path    
+    preprocessor_scaled_path: Path
+    preprocessor_unscaled_path: Path   

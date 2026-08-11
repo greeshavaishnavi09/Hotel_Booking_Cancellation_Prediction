@@ -63,11 +63,12 @@ class ConfigurationManager:
 
         data_transformation_config = DataTransformationConfig(
 
-            root_dir=config.root_dir,
-            data_path=config.data_path,
-            transformed_train_path=config.transformed_train_path,
-            transformed_test_path=config.transformed_test_path,
-            preprocessor_path=config.preprocessor_path
+            root_dir=Path(config.root_dir),
+            data_path=Path(config.data_path),
+            transformed_train_path=Path(config.transformed_train_path),
+            transformed_test_path=Path(config.transformed_test_path),
+            preprocessor_scaled_path=Path(config.preprocessor_scaled_path),
+            preprocessor_unscaled_path=Path(config.preprocessor_unscaled_path)
         )
 
-        return data_transformation_config    
+        return data_transformation_config 
