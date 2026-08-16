@@ -3,7 +3,7 @@
 import os
 import pandas as pd
 import joblib
-import numpy as np
+import numpy as np 
 
 from Hotel_Booking_Cancellation_Prediction.logging import logger
 
@@ -401,5 +401,3 @@ class ModelTrainer:
         return (results_df,
             best_model_name
         )
-
-
