@@ -3,13 +3,14 @@
 import os
 import pandas as pd
 import joblib
+import numpy as np
 
 from Hotel_Booking_Cancellation_Prediction.logging import logger
 
 from sklearn.linear_model import LogisticRegression
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.svm import SVC
+from sklearn.svm import LinearSVC
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.naive_bayes import GaussianNB
 
@@ -26,7 +27,6 @@ from sklearn.metrics import (
 
 
 # components
-
 
 class ModelTrainer:
 
@@ -79,7 +79,7 @@ class ModelTrainer:
 
     # CALCULATE CLASSIFICATION METRICS
 
-    def evaluate_model(self,model,X_test,y_test):
+    def evaluate_model(self, model, X_test, y_test):
 
         # Predictions
 
@@ -108,7 +108,7 @@ class ModelTrainer:
                 1 /
                 (
                     1 +
-                    __import__("numpy").exp(
+                    np.exp(
                         -y_score
                     )
                 )
@@ -225,18 +225,18 @@ class ModelTrainer:
             "is_canceled"
         ]
 
-       
         # FINAL MODEL
-    
-        # Use the exact finalized parameters from model-experiment notebooks from all models
-        # KNN parameters are confirmed from our experiment:
-        # n_neighbors = 11
-        # weights = distance
+
+        # choose the final parameters from all the model from model_experiments
 
         models = {
 
             "Logistic Regression": (
                 LogisticRegression(
+                    C=100,
+                    class_weight="balanced",
+                    penalty="l1",
+                    solver="liblinear",
                     max_iter=1000,
                     random_state=42
                 ),
@@ -245,6 +245,10 @@ class ModelTrainer:
 
             "Decision Tree": (
                 DecisionTreeClassifier(
+                    criterion="gini",
+                    max_depth=20,
+                    min_samples_leaf=1,
+                    min_samples_split=2,
                     random_state=42
                 ),
                 "unscaled"
@@ -252,6 +256,11 @@ class ModelTrainer:
 
             "Random Forest": (
                 RandomForestClassifier(
+                    n_estimators=200,
+                    max_depth=None,
+                    max_features=None,
+                    min_samples_leaf=1,
+                    min_samples_split=2,
                     random_state=42,
                     n_jobs=-1
                 ),
@@ -259,11 +268,11 @@ class ModelTrainer:
             ),
 
             "SVM": (
-                SVC(
-                    kernel="linear",
+                LinearSVC(
                     C=0.1,
-                    probability=True,
-                    random_state=42
+                    class_weight="balanced",
+                    random_state=42,
+                    max_iter=5000
                 ),
                 "scaled"
             ),
@@ -277,7 +286,9 @@ class ModelTrainer:
             ),
 
             "Naive Bayes": (
-                GaussianNB(),
+                GaussianNB(
+                    var_smoothing=0.01
+                ),
                 "scaled"
             )
         }
@@ -286,10 +297,9 @@ class ModelTrainer:
 
         trained_models = {}
 
-    
         # TRAIN EACH MODEL
 
-        for model_name, (model,data_type) in models.items():
+        for model_name, (model, data_type) in models.items():
 
             print(f"Training {model_name}...")
 
@@ -324,7 +334,7 @@ class ModelTrainer:
             trained_models[model_name] = model
 
         # MODEL COMPARISON
-        
+
         results_df = pd.DataFrame(results)
 
         results_df = results_df[
@@ -341,11 +351,7 @@ class ModelTrainer:
             ]
         ]
 
-       
         # SELECT BEST MODEL
-    
-        # F1 is used as the primary selection metric because this is a cancellation classification 
-        # problem and we care about both precision and recall.
 
         best_model_name = (
             results_df
@@ -368,14 +374,12 @@ class ModelTrainer:
 
         print(best_model_name)
 
-       
         # SAVE MODEL REPORT
 
         results_df.to_csv(
             self.config.model_report_path,
             index=False
         )
-
 
         # SAVE BEST MODEL
 
@@ -394,7 +398,8 @@ class ModelTrainer:
             self.config.trained_model_path
         )
 
-        return (
-            results_df,
+        return (results_df,
             best_model_name
         )
+
+
