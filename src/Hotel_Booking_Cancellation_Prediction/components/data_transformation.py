@@ -297,6 +297,18 @@ class DataTransformation:
             index=False
         )
 
+        # Save unscaled data
+
+        train_unscaled_df.to_csv(
+            self.config.transformed_unscaled_train_path,
+            index=False
+        )
+
+        test_unscaled_df.to_csv(
+            self.config.transformed_unscaled_test_path,
+            index=False
+        )
+
         # Save both preprocessors
         scaled_path = (
             self.config.root_dir

@@ -16,9 +16,12 @@ data_validation:
 data_transformation:
   root_dir: artifacts/data_transformation
   data_path: artifacts/data_ingestion/hotel_bookings.csv
-  transformed_train_path: artifacts/data_transformation/train.csv
-  transformed_test_path: artifacts/data_transformation/test.csv
+  transformed_train_path: artifacts/data_transformation/train.csv  # scale train path
+  transformed_test_path: artifacts/data_transformation/test.csv    # scaled test path
+  transformed_unscaled_train_path: artifacts/data_transformation/train_unscaled.csv
+  transformed_unscaled_test_path: artifacts/data_transformation/test_unscaled.csv
   preprocessor_scaled_path: artifacts/data_transformation/preprocessor_scaled.pkl
   preprocessor_unscaled_path: artifacts/data_transformation/preprocessor_unscaled.pkl
+  
 
      

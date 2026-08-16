@@ -67,6 +67,8 @@ class ConfigurationManager:
             data_path=Path(config.data_path),
             transformed_train_path=Path(config.transformed_train_path),
             transformed_test_path=Path(config.transformed_test_path),
+            transformed_unscaled_train_path=Path(config.transformed_unscaled_train_path),
+            transformed_unscaled_test_path=Path(config.transformed_unscaled_test_path),
             preprocessor_scaled_path=Path(config.preprocessor_scaled_path),
             preprocessor_unscaled_path=Path(config.preprocessor_unscaled_path)
         )
