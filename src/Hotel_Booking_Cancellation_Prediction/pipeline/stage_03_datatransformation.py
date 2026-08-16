@@ -22,6 +22,9 @@ class DataTransformationTrainingPipeline:
 
             data_transformation.transform_data()
 
+            logger.info(">>>>>> Data Transformation Stage Completed <<<<<<")
+            
+
         except Exception as e:
 
             logger.exception(e)
