@@ -30,4 +30,9 @@ model_trainer:
   trained_model_path: artifacts/model_trainer/model.pkl
   model_report_path: artifacts/model_trainer/model_report.csv  
 
-     
+
+model_evaluation:
+  root_dir: artifacts/model_evaluation
+  model_path: artifacts/model_trainer/model.pkl
+  test_data_path: artifacts/data_transformation/test_unscaled.csv # because our best model is Random Forest 
+  metric_file_name: artifacts/model_evaluation/metrics.csv
