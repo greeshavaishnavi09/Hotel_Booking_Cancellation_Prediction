@@ -120,7 +120,7 @@ class ConfigurationManager:
 
             model_path=Path(config.model_path),
 
-            preprocessor_unscaled_path =Path(config.preprocessor_path)
+            preprocessor_unscaled_path =Path(config.preprocessor_unscaled_path)
         )
 
         return prediction_pipeline_config
