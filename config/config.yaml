@@ -36,3 +36,7 @@ model_evaluation:
   model_path: artifacts/model_trainer/model.pkl
   test_data_path: artifacts/data_transformation/test_unscaled.csv # because our best model is Random Forest 
   metric_file_name: artifacts/model_evaluation/metrics.csv
+
+prediction_pipeline:
+  model_path: artifacts/model_trainer/model.pkl
+  preprocessor_unscaled_path: artifacts/data_transformation/preprocessor_unscaled.pkl
