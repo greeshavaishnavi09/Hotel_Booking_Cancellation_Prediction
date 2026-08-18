@@ -2,6 +2,7 @@ from Hotel_Booking_Cancellation_Prediction.pipeline.stage_01_dataingestion impor
 from Hotel_Booking_Cancellation_Prediction.pipeline.stage_02_datavalidation import DataValidationTrainingPipeline
 from Hotel_Booking_Cancellation_Prediction.pipeline.stage_03_datatransformation import DataTransformationTrainingPipeline
 from Hotel_Booking_Cancellation_Prediction.pipeline.stage_04_modeltrainer import ModelTrainerTrainingPipeline
+from Hotel_Booking_Cancellation_Prediction.pipeline.stage_05_modelevaluation import ModelEvaluationTrainingPipeline
 from Hotel_Booking_Cancellation_Prediction.logging import logger
 
 
@@ -53,6 +54,21 @@ try:
     logger.info(f">>>>>> Stage {STAGE_NAME} Started <<<<<<")
 
     obj = ModelTrainerTrainingPipeline()
+    obj.main()
+
+    logger.info(f">>>>>> Stage {STAGE_NAME} Completed <<<<<<")
+
+except Exception as e:
+    logger.exception(e)
+    raise e
+
+
+STAGE_NAME = "Model Evaluation Stage"
+
+try:
+    logger.info(f">>>>>> Stage {STAGE_NAME} Started <<<<<<")
+
+    obj = ModelEvaluationTrainingPipeline()
     obj.main()
 
     logger.info(f">>>>>> Stage {STAGE_NAME} Completed <<<<<<")
