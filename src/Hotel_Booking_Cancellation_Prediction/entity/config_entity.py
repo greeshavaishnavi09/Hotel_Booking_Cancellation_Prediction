@@ -53,3 +53,9 @@ class ModelEvaluationConfig:
     model_path: Path
     test_data_path: Path
     metric_file_name: Path    
+
+@dataclass(frozen=True)
+class PredictionPipelineConfig:
+
+    model_path: Path
+    preprocessor_unscaled_path: Path    

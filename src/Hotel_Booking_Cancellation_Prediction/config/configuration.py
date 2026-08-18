@@ -7,6 +7,7 @@ from Hotel_Booking_Cancellation_Prediction.entity.config_entity import DataValid
 from Hotel_Booking_Cancellation_Prediction.entity.config_entity import DataTransformationConfig
 from Hotel_Booking_Cancellation_Prediction.entity.config_entity import ModelTrainerConfig
 from Hotel_Booking_Cancellation_Prediction.entity.config_entity import ModelEvaluationConfig
+from Hotel_Booking_Cancellation_Prediction.entity.config_entity import PredictionPipelineConfig
 
 class ConfigurationManager:
     def __init__(
@@ -109,3 +110,20 @@ class ConfigurationManager:
         )
 
         return model_evaluation_config
+
+    
+    def get_prediction_pipeline_config(self) -> PredictionPipelineConfig:
+
+        config = self.config["prediction_pipeline"]
+
+        prediction_pipeline_config = PredictionPipelineConfig(
+
+            model_path=Path(config.model_path),
+
+            preprocessor_unscaled_path =Path(config.preprocessor_path)
+        )
+
+        return prediction_pipeline_config
+
+
+    
