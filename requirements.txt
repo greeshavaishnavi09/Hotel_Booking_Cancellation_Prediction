@@ -1,9 +1,6 @@
 pandas
 numpy
 scikit-learn
-matplotlib
-notebook
-python-box
-kaggle.json
-ensure
--e .
+joblib
+streamlit
+PyYAML
