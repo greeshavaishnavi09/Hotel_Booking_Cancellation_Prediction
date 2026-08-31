@@ -1,4 +1,7 @@
+
 # Hotel Booking Cancellation Prediction
+
+End-to-end machine learning project for predicting hotel booking cancellations with a Streamlit prediction application.
 
 A machine learning classification project that predicts whether a hotel booking is likely to be cancelled based on booking-related information.
 
@@ -117,3 +120,5 @@ After entering the booking information, the application displays:
 - Joblib
 - Matplotlib
 - Seaborn
+
+
