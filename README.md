@@ -41,14 +41,14 @@ I trained and compared the following classification models:
 
 The models were compared using Accuracy, Precision, Recall, Specificity and F1 Score.
 
-Model Comparison:
-                 Model  Accuracy  Precision  Recall  Specificity  F1 Score  
-0  Logistic Regression    0.8277     0.7416  0.8210       0.8316    0.7793   
-1        Decision Tree    0.8680     0.8162  0.8306       0.8899    0.8233   
-2        Random Forest    0.8923     0.8698  0.8341       0.9266    0.8516   
-3                  SVM    0.8268     0.7393  0.8225       0.8293    0.7787   
-4                  KNN    0.8602     0.8213  0.7957       0.8982    0.8083   
-5          Naive Bayes    0.6931     0.5574  0.8323       0.6112    0.6677   
+| Model | Accuracy | Precision | Recall | Specificity | F1 Score |
+
+| Logistic Regression | 82.77% | 74.16% | 82.10% | 83.16% | 77.93% |
+| Decision Tree | 86.80% | 81.62% | 83.06% | 88.99% | 82.33% |
+| Random Forest | 89.23% | 86.98% | 83.41% | 92.66% | 85.16% |
+| SVM | 82.68% | 73.93% | 82.25% | 82.93% | 77.87% |
+| KNN | 86.02% | 82.13% | 79.57% | 89.82% | 80.83% |
+| Naive Bayes | 69.31% | 55.74% | 83.23% | 61.12% | 66.77% |
 
 
 ### Best Performing Model
